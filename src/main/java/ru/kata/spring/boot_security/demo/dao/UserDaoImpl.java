@@ -2,7 +2,6 @@ package ru.kata.spring.boot_security.demo.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.models.User;
 
 import javax.persistence.EntityManager;
@@ -11,11 +10,10 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Component
-@Transactional
 public class UserDaoImpl implements UserDao {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Autowired
     public UserDaoImpl(EntityManager entityManager) {
@@ -30,8 +28,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserById(long id) {
-        return entityManager.find(User.class, id);
+    public User getUserById(Integer userId) {
+        return entityManager.find(User.class, userId);
     }
 
     @Override
@@ -40,12 +38,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void removeUser(long id) {
-        entityManager.remove(getUserById(id));
+    public void removeUser(Integer userId) {
+        entityManager.remove(getUserById(userId));
     }
 
     @Override
-    public void updateUser(long id, User user) {
+    public void updateUser(Integer userId, User user) {
         entityManager.merge(user);
     }
 }

@@ -15,7 +15,6 @@ import ru.kata.spring.boot_security.demo.configs.service.UserService;
 import ru.kata.spring.boot_security.demo.models.User;
 
 import java.security.Principal;
-import java.util.List;
 
 @RequestMapping("/admin")
 @Controller
@@ -29,29 +28,28 @@ public class AdminController {
         this.userService = userService;
     }
 
-    @GetMapping()
+    @GetMapping
     public String showUser(Model model, Principal principal) {
         model.addAttribute("user", userService.findByEmail(principal.getName()));
-        List userList = daoService.getAllUsers();
-        model.addAttribute("users", userList);
+        model.addAttribute("users", daoService.getAllUsers());
         return "admin";
     }
 
-    @PostMapping()
+    @PostMapping
     public String create(@ModelAttribute("user") User user) {
         daoService.addUser(user);
         return "redirect:/admin";
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable("id") int id, @ModelAttribute("user") User user) {
-        daoService.updateUser(id, user);
+    public String update(@PathVariable("id") Integer userId, @ModelAttribute("user") User user) {
+        daoService.updateUser(userId, user);
         return "redirect:/admin";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
-        daoService.removeUser(id);
+    public String delete(@PathVariable("id") Integer userId) {
+        daoService.removeUser(userId);
         return "redirect:/admin";
     }
 }
