@@ -11,16 +11,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "roles")
 public class Role {
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
-    Long id;
+    private Integer roleId;
 
     @Column(name = "name")
     private String name;
 
-    public Role(Long id, String name) {
-        this.id = id;
+    public Role(Integer roleId, String name) {
+        this.roleId = roleId;
         this.name = name;
     }
 
@@ -32,12 +33,12 @@ public class Role {
     public Role() {
     }
 
-    public Long getId() {
-        return id;
+    public Integer getId() {
+        return roleId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {
@@ -47,4 +48,5 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
+
 }

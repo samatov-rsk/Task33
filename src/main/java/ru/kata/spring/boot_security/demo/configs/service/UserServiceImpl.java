@@ -9,12 +9,12 @@ import ru.kata.spring.boot_security.demo.repositiories.UserRepository;
 import java.util.List;
 
 @Service
-public class DaoServiceImpl implements DaoService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public DaoServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -26,7 +26,7 @@ public class DaoServiceImpl implements DaoService {
 
     @Transactional(readOnly = true)
     @Override
-    public User getUserById(Long userId) {
+    public User getUserById(Integer userId) {
         return userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found by %s" + userId));
     }
 
@@ -38,13 +38,14 @@ public class DaoServiceImpl implements DaoService {
 
     @Transactional
     @Override
-    public void removeUser(Long userId) {
+    public void removeUser(Integer userId) {
         userRepository.deleteById(userId);
     }
 
     @Transactional
     @Override
-    public void updateUser(Long userId, User user) {
+    public void updateUser(User user) {
         userRepository.save(user);
     }
+
 }

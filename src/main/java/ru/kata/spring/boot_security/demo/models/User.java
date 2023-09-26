@@ -1,7 +1,5 @@
 package ru.kata.spring.boot_security.demo.models;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import java.util.Collection;
 
-import static javax.persistence.GenerationType.*;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "users")
@@ -23,7 +21,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Integer userId;
 
     @Column(name = "name")
     private String username;
@@ -40,14 +38,14 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
-    public User(Long id, String username, String surname, int age, String email, String password, Collection<Role> roles) {
-        this.id = id;
+    public User(Integer userId, String username, String surname, int age, String email, String password, Collection<Role> roles) {
+        this.userId = userId;
         this.username = username;
         this.surname = surname;
         this.age = age;
@@ -59,12 +57,12 @@ public class User {
     public User() {
     }
 
-    public Long getId() {
-        return id;
+    public Integer getId() {
+        return userId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.userId = userId;
     }
 
     public String getName() {
@@ -118,7 +116,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id=" + userId +
                 ", username='" + username + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
@@ -127,4 +125,5 @@ public class User {
                 ", roles=" + roles +
                 '}';
     }
+
 }
