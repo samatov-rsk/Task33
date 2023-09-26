@@ -42,13 +42,13 @@ public class AdminController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable("id") Integer userId, @ModelAttribute("user") User user) {
+    public String update(@PathVariable("id") Long userId, @ModelAttribute("user") User user) {
         daoService.updateUser(userId, user);
         return "redirect:/admin";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") Integer userId) {
+    public String delete(@PathVariable("id") Long userId) {
         daoService.removeUser(userId);
         return "redirect:/admin";
     }

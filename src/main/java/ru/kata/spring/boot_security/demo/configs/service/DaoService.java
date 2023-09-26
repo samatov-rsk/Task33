@@ -10,11 +10,11 @@ public interface DaoService {
 
     List<User> getAllUsers();
 
-    User getUserById(Integer userId);
+    User getUserById(Long userId);
 
     void addUser(User user);
 
-    void removeUser(Integer userId);
+    void removeUser(Long userId);
 
-    void updateUser(Integer userId, User user);
+    void updateUser(Long userId, User user);
 }
