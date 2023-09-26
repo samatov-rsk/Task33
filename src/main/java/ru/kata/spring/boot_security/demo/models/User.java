@@ -16,7 +16,6 @@ import java.util.Collection;
 
 import static javax.persistence.GenerationType.*;
 
-@Component
 @Entity
 @Table(name = "users")
 public class User {
