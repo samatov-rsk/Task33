@@ -86,9 +86,9 @@
                                         <td th:text="${user.roles}">Email</td>
                                         <td>
                                             <button type="button" class="btn btn-info" data-bs-toggle="modal"
-                                                    th:data-bs-target="${'#exampleModal' +user.getId()}">Edit
+                                                    th:data-bs-target="${'#editModal' +user.getId()}">Edit
                                             </button>
-                                            <div class="modal fade" th:id="${'exampleModal' +user.getId()}"
+                                            <div class="modal fade" th:id="${'editModal' +user.getId()}"
                                                  tabindex="-1"
                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
@@ -106,58 +106,58 @@
                                                                   th:object="${user}">
                                                                 <div class="mb-100 w-50 m-auto text-center">
                                                                     <div class="form-group m-auto col-md-8">
-                                                                        <label for="ID1"><strong>Id</strong></label>
+                                                                        <label for="EditId"><strong>Id</strong></label>
                                                                         <input th:name="id" th:type="text"
-                                                                               class="form-control" id="id"
+                                                                               class="form-control" id="EditId"
                                                                                th:value="${user.id}"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-100 w-50 m-auto text-center">
                                                                     <div class="form-group m-auto col-md-8">
-                                                                        <label for="ID1"><strong>First
+                                                                        <label for="EditName"><strong>First
                                                                             name</strong></label>
                                                                         <input th:name="name" th:type="text"
-                                                                               class="form-control" id="name1"
+                                                                               class="form-control" id="EditName"
                                                                                th:value="${user.name}"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-100 w-50 m-auto text-center">
                                                                     <div class="form-group m-auto col-md-8">
-                                                                        <label for="ID1"><strong>Last
+                                                                        <label for="EditSurname"><strong>Last
                                                                             name</strong></label>
                                                                         <input th:name="surname" th:type="text"
-                                                                               class="form-control" id="surname1"
+                                                                               class="form-control" id="EditSurname"
                                                                                th:value="${user.surname}"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-100 w-50 m-auto text-center">
                                                                     <div class="form-group m-auto col-md-8">
-                                                                        <label for="ID1"><strong>Age</strong></label>
+                                                                        <label for="EditAge"><strong>Age</strong></label>
                                                                         <input th:name="age" th:type="text"
-                                                                               class="form-control" id="age"
+                                                                               class="form-control" id="EditAge"
                                                                                th:value="${user.age}"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-100 w-50 m-auto text-center">
                                                                     <div class="form-group m-auto col-md-8">
-                                                                        <label for="ID1"><strong>Email</strong></label>
+                                                                        <label for="EditEmail"><strong>Email</strong></label>
                                                                         <input th:name="email" th:type="text"
-                                                                               class="form-control" id="email"
+                                                                               class="form-control" id="EditEmail"
                                                                                th:value="${user.email}"/>
                                                                     </div>
                                                                 </div>
                                                                 <div class="mb-100 w-50 m-auto text-center">
                                                                     <div class="form-group m-auto col-md-8">
-                                                                        <label for="ID1"><strong>Password
+                                                                        <label for="EditPass"><strong>Password
                                                                         </strong></label>
                                                                         <input th:name="password" th:type="text"
-                                                                               class="form-control" id="password"
+                                                                               class="form-control" id="EditPass"
                                                                                th:value="${user.password}"/>
                                                                     </div>
                                                                 </div>
                                                                 <select class="form-select" th:name="roles"
                                                                         th:type="text" th:value="${user.roles}" size="2"
-                                                                        aria-label="пример элемента выбора размером равному 3"multiple>
+                                                                        multiple>
                                                                     <option value="1">ADMIN</option>
                                                                     <option value="2">USER</option>
                                                                 </select>
@@ -176,9 +176,9 @@
                                         </td>
                                         <td>
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                                    th:data-bs-target="${'#exampleModal2' +user.getId()}">Delete
+                                                    th:data-bs-target="${'#DeleteModal' +user.getId()}">Delete
                                             </button>
-                                            <div class="modal fade" th:id="${'exampleModal2' +user.getId()}"
+                                            <div class="modal fade" th:id="${'DeleteModal' +user.getId()}"
                                                  tabindex="-1"
                                                  aria-labelledby="exampleModalLabel1" aria-hidden="true">
                                                 <div class="modal-dialog">
@@ -194,44 +194,43 @@
                                                         <div class="modal-body">
                                                             <form>
                                                                 <div class="mb-3">
-                                                                    <label for="ID1"
+                                                                    <label for="DeleteId"
                                                                            class="col-form-label">ID:</label>
-                                                                    <input id="ID1" type="text" placeholder="id"
+                                                                    <input id="DeleteId" type="text" placeholder="id"
                                                                            class="form-control input-md"
                                                                            th:value="${user.getId()}"/>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="FIRST NAME" class="col-form-label">FIRST
+                                                                    <label for="DeleteName" class="col-form-label">FIRST
                                                                         NAME:</label>
-                                                                    <input id="FIRST NAME" type="text"
-                                                                           placeholder="id"
+                                                                    <input id="DeleteName" type="text"
+                                                                           placeholder="Name"
                                                                            class="form-control input-md"
                                                                            th:value="${user.getName()}"/>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="LASTNAME"
+                                                                    <label for="DeleteSurname"
                                                                            class="col-form-label">LASTNAME:</label>
-                                                                    <input id="LASTNAME" type="text"
-                                                                           placeholder="id"
+                                                                    <input id="DeleteSurname" type="text"
+                                                                           placeholder="Surname"
                                                                            class="form-control input-md"
                                                                            th:value="${user.getSurname()}"/>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="AGE"
+                                                                    <label for="DeleteAge"
                                                                            class="col-form-label">AGE:</label>
-                                                                    <input id="AGE2" type="text" placeholder="id"
+                                                                    <input id="DeleteAge" type="text" placeholder="Age"
                                                                            class="form-control input-md"
                                                                            th:value="${user.getAge()}"/>
                                                                 </div>
                                                                 <div class="mb-3">
-                                                                    <label for="EMAIL"
+                                                                    <label for="DeleteEmail"
                                                                            class="col-form-label">EMAIL:</label>
-                                                                    <input id="EMAIL2" type="text" placeholder="id"
+                                                                    <input id="DeleteEmail" type="text" placeholder="Email"
                                                                            class="form-control input-md"
                                                                            th:value="${user.getEmail()}"/>
                                                                 </div>
-                                                                <select multiple class="form-select" size="2"
-                                                                        aria-label="пример элемента выбора размером равному 3">
+                                                                <select multiple class="form-select" size="2">
                                                                     <option value="1">ADMIN</option>
                                                                     <option value="2">USER</option>
                                                                 </select>
@@ -269,47 +268,47 @@
                                     <form th:method="POST" th:action="@{/admin}" th:object="${user}">
                                         <div class="mb-100 w-50 m-auto text-center">
                                             <div class="form-group m-auto col-md-8">
-                                                <label for="ID1"><strong>First name</strong></label>
+                                                <label for="AddName"><strong>First name</strong></label>
                                                 <input type="text" th:field="*{name}" formControlName="email"
                                                        class="form-control"
-                                                       id="name" placeholder="Name">
+                                                       id="AddName" placeholder="Name">
                                             </div>
                                         </div>
                                         <div class="mb-100 w-50 m-auto text-center">
                                             <div class="form-group m-auto col-md-8">
-                                                <label for="surname"><strong>Last Name</strong></label>
+                                                <label for="AddSurname"><strong>Last Name</strong></label>
                                                 <input type="text" th:field="*{surname}" formControlName="email"
                                                        class="form-control"
-                                                       id="surname" placeholder="Surname">
+                                                       id="AddSurname" placeholder="Surname">
                                             </div>
                                         </div>
                                         <div class="mb-100 w-50 m-auto text-center">
                                             <div class="form-group m-auto col-md-8">
-                                                <label for="age"><strong>Email</strong></label>
+                                                <label for="AddEmail"><strong>Email</strong></label>
                                                 <input type="text" th:field="*{email}" formControlName="email"
                                                        class="form-control"
-                                                       id="email1" placeholder="Email">
+                                                       id="AddEmail" placeholder="Email">
                                             </div>
                                         </div>
                                         <div class="mb-100 w-50 m-auto text-center">
                                             <div class="form-group m-auto col-md-8">
-                                                <label for="age"><strong>Age</strong></label>
+                                                <label for="AddAge"><strong>Age</strong></label>
                                                 <input type="text" th:field="*{age}" formControlName="email"
                                                        class="form-control"
-                                                       id="age1" placeholder="Age">
+                                                       id="AddAge" placeholder="Age">
                                             </div>
                                         </div>
                                         <div class="mb-100 w-50 m-auto text-center">
                                             <div class="form-group m-auto col-md-8">
-                                                <label for="inputPassword4"><strong>Password</strong></label>
+                                                <label for="AddPass"><strong>Password</strong></label>
                                                 <input type="password" th:field="*{password}" formControlName="password"
-                                                       class="form-control" id="inputPassword4" placeholder="Password">
+                                                       class="form-control" id="AddPass" placeholder="Password">
                                             </div>
                                         </div>
                                         <div class="mb-100 w-50 m-auto text-center">
                                             <div class="form-group m-auto col-md-8">
-                                                <label for="name1"><strong>Role</strong></label>
-                                                <select class="form-select" th:field="*{roles}" size="2"
+                                                <label for="AddRole"><strong>Role</strong></label>
+                                                <select id="AddRole" class="form-select" th:field="*{roles}" size="2"
                                                         aria-label="пример элемента выбора размером равному 3"multiple>
                                                     <option value="1">ADMIN</option>
                                                     <option value="2">USER</option>

@@ -29,26 +29,26 @@ public class AdminController {
     }
 
     @GetMapping
-    public String showUser(Model model, Principal principal) {
+    public String getAllUsers(Model model, Principal principal) {
         model.addAttribute("user", userRepository.findByEmail(principal.getName()));
         model.addAttribute("users", userService.getAllUsers());
         return "admin";
     }
 
     @PostMapping
-    public String create(@ModelAttribute("user") User user) {
+    public String createNewUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/admin";
     }
 
     @PatchMapping("/{id}")
-    public String update(@PathVariable("id") Integer userId, @ModelAttribute("user") User user) {
-        userService.updateUser(user);
+    public String updateUser(@PathVariable("id") Integer userId, @ModelAttribute("user") User user) {
+        userService.updateUser(userId, user);
         return "redirect:/admin";
     }
 
     @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") Integer userId) {
+    public String deleteUser(@PathVariable("id") Integer userId) {
         userService.removeUser(userId);
         return "redirect:/admin";
     }

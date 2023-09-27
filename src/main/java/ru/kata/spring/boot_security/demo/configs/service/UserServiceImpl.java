@@ -1,6 +1,7 @@
 package ru.kata.spring.boot_security.demo.configs.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.acls.model.NotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.models.User;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     @Override
     public User getUserById(Integer userId) {
-        return userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found by %s" + userId));
+        return userRepository.findById(userId).orElseThrow(() -> new NotFoundException("User not found by %s" + userId));
     }
 
     @Transactional
@@ -39,13 +40,20 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public void removeUser(Integer userId) {
-        userRepository.deleteById(userId);
+        userRepository.delete(userRepository.getById(userId));
     }
 
     @Transactional
     @Override
-    public void updateUser(User user) {
-        userRepository.save(user);
+    public void updateUser(Integer userId, User user) {
+        User updateUser = getUserById(userId);
+        updateUser.setName(user.getName());
+        updateUser.setSurname(user.getSurname());
+        updateUser.setAge(user.getAge());
+        updateUser.setEmail(user.getEmail());
+        updateUser.setPassword(user.getPassword());
+        updateUser.setRoles(user.getRoles());
+        userRepository.save(updateUser);
     }
 
 }
