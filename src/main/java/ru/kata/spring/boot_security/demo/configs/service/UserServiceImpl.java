@@ -55,5 +55,4 @@ public class UserServiceImpl implements UserService {
         updateUser.setRoles(user.getRoles());
         userRepository.save(updateUser);
     }
-
 }

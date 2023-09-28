@@ -21,5 +21,4 @@ public class UserController {
         model.addAttribute("user", userRepository.findByEmail(principal.getName()));
         return "user";
     }
-
 }
