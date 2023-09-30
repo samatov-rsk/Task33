@@ -29,7 +29,7 @@ public class AdminController {
     }
 
     @GetMapping
-    public String getAllUsers(Model model, Principal principal) {
+    public String getAllUsersPage(Model model, Principal principal) {
         model.addAttribute("user", userRepository.findByEmail(principal.getName()));
         model.addAttribute("users", userService.getAllUsers());
         return "admin";
@@ -43,7 +43,7 @@ public class AdminController {
 
     @PatchMapping("/{id}")
     public String updateUser(@PathVariable("id") Integer userId, @ModelAttribute("user") User user) {
-        userService.updateUser(userId, user);
+        userService.userToUpdate(userId, user);
         return "redirect:/admin";
     }
 

@@ -20,17 +20,12 @@ public class Role {
     @Column(name = "name")
     private String name;
 
+    public Role() {
+    }
+
     public Role(Integer roleId, String name) {
         this.roleId = roleId;
         this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
-
-    public Role() {
     }
 
     public Integer getRoleId() {
@@ -48,4 +43,10 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+
 }
