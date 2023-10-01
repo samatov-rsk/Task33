@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void addUser(User user) {
-        userRepository.save(user);
+    public User addUser(User user) {
+        return userRepository.save(user);
     }
 
     @Transactional
@@ -45,14 +45,14 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void userToUpdate(Integer userId, User user) {
-        User updateUser = getUserById(userId);
-        updateUser.setName(user.getName());
-        updateUser.setSurname(user.getSurname());
-        updateUser.setAge(user.getAge());
-        updateUser.setEmail(user.getEmail());
-        updateUser.setPassword(user.getPassword());
-        updateUser.setRoles(user.getRoles());
-        userRepository.save(updateUser);
+    public User updateUserById(Integer userId, User user) {
+        User userToUpdate  = getUserById(userId);
+        userToUpdate .setName(user.getName());
+        userToUpdate .setSurname(user.getSurname());
+        userToUpdate .setAge(user.getAge());
+        userToUpdate .setEmail(user.getEmail());
+        userToUpdate .setPassword(user.getPassword());
+        userToUpdate .setRoles(user.getRoles());
+        return userRepository.save(userToUpdate );
     }
 }
